@@ -1,10 +1,51 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>trabalho estrutura</title>
+<head>
+<body onload="imprimir()">
 <h1>Teste estrutura de dados</p>
-<form>
-	Valor novo<br/>
-	<input id="dado"type="text"/><br/>
-	posição<br/>
-	<input id="posicao" type="number" min=0/><br/>
-	<button onclick="lista()">Hide the text above</button>
+	<!--reiniciará a janela usando o form-->
+	<form>
+		<table border="3">
+		<tr>
+			<td>
+				Valor novo<br/>
+				<input id="dado"type="text"/><br/>
+				posição<br/>
+				<input id="posicao" type="number" min=0/><br/>
+				<button onclick="lista()">Inserir</button><br/>
+			</td>
+		<tr>
+
+		<tr>
+			<td>
+				Dado a ser buscado<br/>
+				<input type="text" id="buscaDado"/><br/>
+				<button>Buscar</button><br/>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Dado a ser Alterado<br/>
+				<input type="text" id="alteraDado"/><br/>
+				<button>Alterar</button><br/>
+			</td>
+		</tr>
+
+		<tr>
+			<td>	
+				Dado a ser excluido<br/>
+				<input type="text" id="excluiDado"/><br/>
+				<button>Excluir</button><br/>
+			</td>
+		</tr>
+		</table>
+	</form>
+
+	<!--Saida de dados-->
 	<table>
 		<tr id="list">
 
@@ -14,13 +55,33 @@
 	<script type="text/javascript">
 		var tamanho;
 		var max = 5;
-		var elementos = [];
+		var elementos = ["max", "123123","aeuhauweh", "!@#13"]
 		//iniciou a lista
 		function lista(max){
-			elementos = ["max", "123123", "!@#13"];
+			//Eu não sei como limitar o tamanho de um array utilizando uma variavel com js
+			elementos = [];
 			tamanho = 0;
+		}
+		//Vai ser iniciado sempre que a algo reiniciar o janela
+		function imprimir(){
 			document.getElementById("list").innerHTML =
 			"<td>"+ elementos +"</td>";
 		}
 
+		function busca(){
+			var buscador = 0;
+			while(buscador < elementos.length){
+				//um condicional provavelmente
+				buscador = buscador + 1;
+			}
+		}
+
+		function alterar(){
+
+		}
+		function busca(){
+
+		}
 	</script>
+	</body>
+</html>
