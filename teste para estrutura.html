@@ -2,104 +2,108 @@
 <html>
 
 <head>
-		<tr>
-    <title>trabalho estrutura</title>
+    <tr>
+        <title>trabalho estrutura</title>
+    </tr>
+</head>
 
-    <head>
+<body onload="imprimir()">
 
-    <body onload="imprimir()">
-        <h1>Teste estrutura de dados</p>
-            <!--reiniciará a janela usando o form-->
-            <table border="3">
-                <tr>
-                    tamanho da lista:<br/>
-                    <input id="tamanho" type="number"/>
-                    <button onclick="lista()">criar</button>
-                    <td>
-                        Valor novo<br />
-                        <input id="dado" type="text" /><br />
-                        posição<br />
-                        <input id="posicao" type="number" min=0 /><br />
-                        <button onclick="inserir()">Inserir</button><br />
-                    </td>
-                <tr>
+    Teste estrutura de dados
+    <!--reiniciará a janela usando o form-->
+    <table border="3">
+        <tr>
+            tamanho da lista:<br />
+            <input id="tamanho" type="number" />
+            <button>criar</button>
+            <td>
+                Valor novo<br />
+                <input id="dado" type="text" /><br />
+                posição<br />
+                <input id="posicao" type="number" min=0 /><br />
+                <button onclick="inserir()">Inserir</button><br />
+            </td>
+        <tr>
 
-                <tr>
-                    <td>
-                        Dado a ser buscado<br />
-                        <input type="text" id="buscaDado" /><br />
-                        <button onclick="buscar()">Buscar</button><br />
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                Dado a ser buscado<br />
+                <input type="text" id="buscaDado" /><br />
+                <button onclick="buscar()">Buscar</button><br />
+            </td>
+        </tr>
 
-                <tr>
-                    <td>
-                        Dado a ser Alterado<br />
-                        <input type="text" id="alteraDado" /><br />
-                        <button>Alterar</button><br />
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                Indice do dado a ser removido<br />
+                <input type="text" id="RemoverPorIndice" /><br />
+                <button onclick="RemoverPorIndice()">Remover por índice</button><br />
+            </td>
+        </tr>
 
-                <tr>
-                    <td>
-                        Dado a ser excluido<br />
-                        <input type="text" id="excluiDado" /><br />
-                        <button>Excluir</button><br />
-                    </td>
-                </tr>
-            </table>
+        <tr>
+            <td>
+                Valor do dado a ser removido<br />
+                <input type="text" id="RemoverPorValor" /><br />
+                <button onclick="RemoverPorValor()">Remover por valor</button><br />
+            </td>
+        </tr>
+    </table>
 
-            <!--Saida de dados-->
-            Resultados:<br />
-            <table border="2">
-                <button onclick="imprimir()">exibir</button>
-                <tr id="list">
-                    <!--Criado automáticamente-->>
-                </tr>
+    <!--Saida de dados-->
+    Resultados:<br />
+    <table border="2">
+        <button onclick="imprimir()">exibir</button>
+        <tr id="list">
+            <!--Criado automáticamente-->>
+        </tr>
 
-            </table>
-            <script type="text/javascript">
-                var tamanho;
-                var max = 5;
-                var elementos = [];
-				var i;
-                //iniciou a lista
-                function lista() {
-                    //SSomente necessário tamanho
-                    tamanho = 0;
+    </table>
+    <script type="text/javascript">
+        var tamanho = 0;
+        var max = 5;
+        var elementos = [];
+        var i;
+        //iniciou a lista
+
+        //Funcionando
+        function inserir() {
+            if (tamanho == (document.getElementById("tamanho").value)) {
+                alert("Lista cheia");
+            } else if ((document.getElementById("posicao").value) < 0 || (document.getElementById("posicao").value) > (document.getElementById("tamanho").value)) {
+                alert("Indice inválido");
+            } else {
+                elementos[document.getElementById("posicao").value] = [document.getElementById("dado").value];
+                tamanho = tamanho + 1;
+            }
+        }
+        //Vai ser iniciado sempre que a algo reiniciar o janela
+        function imprimir() {
+            document.getElementById("list").innerHTML =
+                "<td>" + elementos + "</td>";
+        }
+        //Funciona porém não aparece no botão
+        function buscar() {
+            for (i = 0; i < elementos.length; i++) {
+                if (elementos[i] == (document.getElementById("buscaDado").value)) {
+                    alert(i);
                 }
+            }
 
-                //Funcionando
-                function inserir() {
-                    if(tamanho == (document.getElementById("tamanho").value)){
-                        alert("Lista cheia");
-                    }else if((document.getElementById("posicao").value) < 0 ||(document.getElementById("posicao").value) > (document.getElementById("tamanho").value) ){
-                        alert("Indice inválido");
-                    }else{
-                        elementos[document.getElementById("posicao").value] = [document.getElementById("dado").value];
-                        tamanho = tamanho+1;
-                    }
-                }
-                //Vai ser iniciado sempre que a algo reiniciar o janela
-                function imprimir(){
-                        document.getElementById("list").innerHTML =
-                            "<td>" + elementos + "</td>";
-                }
-				//Funciona porém não aparece no botão
-                function buscar() {
-                    for(i=0; i < elementos.length; i++){
-						if(elementos[i] == (document.getElementById("buscaDado").value)){
-							console.log(i);
-							
+        }
 
-						}
-					}
-                }
-                function alterar() {
-                }
-                function busca() {
-                }
-            </script>
-    </body>
+        function RemoverPorIndice() {
+            //Falta a validação
+            elementos.splice(document.getElementById("RemoverPorIndice").value, 1);
+        }
+
+        function RemoverPorValor() {
+             if (elementos[i] == (document.getElementById("RemoverPorIndice").value)) {
+                alert(elementos[i]);
+            }
+        }
+
+    </script>
+</body>
 
 </html>
