@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <tr>
+        <title>trabalho estrutura</title>
+    </tr>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <!--Não pergunta muito não pq eu não lembro muito não-->
+    <script type="text/javascript">
+        //Lembrar de fazer um js separado
+        jQuery.fn.toggleText = function(a, b) {
+            return this.html(this.html().replace(new RegExp("(" + a + "|" + b + ")"), function(x) {
+                return (x == a) ? b : a;
+            }));
+        }
+
+        $(document).ready(function() {
+            //BOTÃO PARA INSERIR
+            $('.tgl').before('<span><button type="button" class="btn btn-secondary btn-lg btn-block">INSERIR</button></span>');
+            $('.tgl').css('display', 'none')
+            $('span', '#box-toggle').click(function() {
+                $(this).next().slideToggle('slow')
+                    .siblings('.tgl:visible').slideToggle('fast');
+                // aqui começa o funcionamento do plugin
+                $(this).toggleText('Revelar', 'Esconder')
+                    .siblings('span').next('.tgl:visible').prev()
+                    .toggleText('Revelar', 'Esconder')
+            });
+        })
+
+        jQuery.fn.toggleText = function(a, b) {
+            return this.html(this.html().replace(new RegExp("(" + a + "|" + b + ")"), function(x) {
+                return (x == a) ? b : a;
+            }));
+        }
+
+        $(document).ready(function() {
+            //BOTÃO PARA Buscar
+            $('.tgl1').before('<span><button type="button" class="btn btn-secondary btn-lg btn-block">BUSCAR</button></span>');
+            $('.tgl1').css('display', 'none')
+            $('span', '#box-toggle1').click(function() {
+                $(this).next().slideToggle('slow')
+                    .siblings('.tgl:visible').slideToggle('fast');
+                // aqui começa o funcionamento do plugin
+                $(this).toggleText('Revelar', 'Esconder')
+                    .siblings('span').next('.tgl:visible').prev()
+                    .toggleText('Revelar', 'Esconder')
+            });
+        })
+
+        $(document).ready(function() {
+            //BOTÃO PARA Buscar
+            $('.tgl2').before('<span><button type="button" class="btn btn-secondary btn-lg btn-block">REMOVER POR ÍNDICE</button></span>');
+            $('.tgl2').css('display', 'none')
+            $('span', '#box-toggle2').click(function() {
+                $(this).next().slideToggle('slow')
+                    .siblings('.tgl:visible').slideToggle('fast');
+                // aqui começa o funcionamento do plugin
+                $(this).toggleText('Revelar', 'Esconder')
+                    .siblings('span').next('.tgl:visible').prev()
+                    .toggleText('Revelar', 'Esconder')
+            });
+        })
+        $(document).ready(function() {
+            //BOTÃO PARA Buscar
+            $('.tgl3').before('<span><button type="button" class="btn btn-secondary btn-lg btn-block">REMOVER POR VALOR</button></span>');
+            $('.tgl3').css('display', 'none')
+            $('span', '#box-toggle3').click(function() {
+                $(this).next().slideToggle('slow')
+                    .siblings('.tgl:visible').slideToggle('fast');
+                // aqui começa o funcionamento do plugin
+                $(this).toggleText('Revelar', 'Esconder')
+                    .siblings('span').next('.tgl:visible').prev()
+                    .toggleText('Revelar', 'Esconder')
+            });
+        })
+
+    </script>
+</head>
+
+<body onload="imprimir()">
+    <header>
+        <!NAVBAR usar js window.onload para sempre iniciar esse navbar>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="ICS_LOGO.png" width="100" height="100" class="d-inline-block align-top" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    Teste estrutura de dados
+    <!--Criando o tamanho da lista-->
+    tamanho da lista:<br />
+    <input id="tamanho" type="number" />
+    <button type="button" class="btn btn-secondary">criar</button>
+
+    <!--Representa o botão com seu respectivo togle-->
+    <div id="box-toggle">
+        <div class="tgl">
+            Valor novo<br />
+            <input id="dado" type="text" /><br />
+            posição<br />
+            <input id="posicao" type="number" min=0 /><br />
+            <button type="button" class="btn btn-secondary" onclick="inserir()">Inserir</button><br />
+        </div>
+    </div>
+    <!--Representa o botão com seu respectivo togle-->
+    <div id="box-toggle1">
+        <div class="tgl1">
+            Dado a ser buscado<br />
+            <input type="text" id="buscaDado" /><br />
+            <button type="button" class="btn btn-secondary" onclick="buscar()">Buscar</button><br />
+        </div>
+    </div>
+    <!--Representa o botão com seu respectivo togle-->
+    <div id="box-toggle2">
+        <div class="tgl2">
+            Indice do dado a ser removido<br />
+            <input type="text" id="RemoverPorIndice" /><br />
+            <button type="button" class="btn btn-secondary" onclick="RemoverPorIndice()">Remover por índice</button><br />
+        </div>
+    </div>
+    <!--Representa o botão com seu respectivo togle-->
+    <div id="box-toggle3">
+        <div class="tgl3">
+            Valor do dado a ser removido<br />
+            <input type="text" id="RemoverPorValor" /><br />
+            <button type="button" class="btn btn-secondary" onclick="RemoverPorValor()">Remover por valor</button><br />
+        </div>
+    </div>
+
+    <!--Saida de dados-->
+    Resultados:<br />
+    <table class="table" border="2">
+        <button type="button" class="btn btn-secondary" onclick="imprimir()">exibir</button>
+        <tr id="list">
+            <!--Criado automáticamente-->
+        </tr>
+
+    </table>
+    <script type="text/javascript">
+        var tamanho = 0;
+        var max = 5;
+        var elementos = [];
+        var i;
+        //iniciou a lista
+
+        //Funcionando
+        function inserir() {
+            if (tamanho == (document.getElementById("tamanho").value)) {
+                alert("Lista cheia");
+            } else if ((document.getElementById("posicao").value) < 0 || (document.getElementById("posicao").value) > (document.getElementById("tamanho").value)) {
+                alert("Indice inválido");
+            } else {
+                elementos[document.getElementById("posicao").value] = [document.getElementById("dado").value];
+                tamanho = tamanho + 1;
+            }
+        }
+        //Vai ser iniciado sempre que a algo reiniciar o janela
+        function imprimir() {
+            document.getElementById("list").innerHTML =
+                "<td>" + elementos + "</td>";
+        }
+        //Funciona porém não aparece no botão
+        function buscar() {
+            for (i = 0; i < elementos.length; i++) {
+                if (elementos[i] == (document.getElementById("buscaDado").value)) {
+                    alert(i);
+                }
+            }
+
+        }
+
+        function RemoverPorIndice() {
+            //Falta a validação
+            if (tamanho == 0 || (document.getElementById("RemoverPorIndice").value > tamanho)) {
+                alert("Lista Vazia ou indice maior do que tamanho da lista");
+            } else {
+                elementos.splice(document.getElementById("RemoverPorIndice").value, 1);
+            }
+        }
+
+        function RemoverPorValor() {
+            //Falta validação
+            for (i = 0; i < elementos.length; i++) {
+                if (elementos[i] == (document.getElementById("RemoverPorValor").value)) {
+                    elementos.splice(i, 1);
+                }
+            }
+
+        }
+
+    </script>
+</body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</html>
