@@ -94,13 +94,21 @@
 
         function RemoverPorIndice() {
             //Falta a validação
-            elementos.splice(document.getElementById("RemoverPorIndice").value, 1);
+            if (tamanho == 0 || (document.getElementById("RemoverPorIndice").value > tamanho)) {
+                alert("Lista Vazia ou indice maior do que tamanho da lista");
+            }else{
+                elementos.splice(document.getElementById("RemoverPorIndice").value, 1);
+            }
         }
 
         function RemoverPorValor() {
-             if (elementos[i] == (document.getElementById("RemoverPorIndice").value)) {
-                alert(elementos[i]);
+            //Falta validação
+             for (i = 0; i < elementos.length; i++) {
+                if (elementos[i] == (document.getElementById("RemoverPorValor").value)) {
+                    elementos.splice(i, 1);
+                }
             }
+          
         }
 
     </script>
